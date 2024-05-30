@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { WebGL } from 'three/examples/jsm/Addons.js';
 import gsap from 'gsap';
 
-function ThreeScene() {
+function ThreeScene({functions, isSelected}) {
     useEffect(() => {
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -132,22 +132,22 @@ function ThreeScene() {
             if (intersects.length > 0) {
                 switch (intersects[0].object.name) {
                     case 'monitorIzquierda':
-                        console.log("izquierda")
-
+                        functions.sobreMi();
+                        functions.selected()
                         break;
                     case 'monitorDerecha':
-                        console.log("derecha")
+                        functions.experiencia();
+                        functions.selected()
                         break;
                     case 'monitorArriba':
-                        console.log("arriba")
+                        functions.contacto();
+                        functions.selected()
                         break;
                     default:
                         break;
                 }
             }
         }
-        window.addEventListener('click', onMouseClick, false);
-
         function onMouseMove(event) {
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -172,7 +172,14 @@ function ThreeScene() {
                 }
             }
         }
-        window.addEventListener('mousemove', onMouseMove, false);
+        console.log(isSelected)
+        if (!isSelected) {
+            window.addEventListener('click', onMouseClick, false);
+            window.addEventListener('mousemove', onMouseMove, false);
+        } else {
+            window.removeEventListener('click', onMouseClick, false);
+            window.removeEventListener('mousemove', onMouseMove, false);
+        }
 
         // Función principal para animar
         function animate() {
