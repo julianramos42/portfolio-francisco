@@ -23,11 +23,11 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
 
         const camera = cameraRef.current || new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         if (!cameraRef.current) {
-            camera.position.set(0, 2, 5);
+            camera.position.set(2, 3, 5);
             cameraRef.current = camera;
         }
 
-        let mixer;
+        let humanMixer, mouseMixer;
 
         const scene = sceneRef.current || new THREE.Scene();
         if (!sceneRef.current) {
@@ -35,7 +35,6 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
         }
 
         const loader = new GLTFLoader();
-
         const basePath = '/assets/portfolio/';
         loader.setPath(basePath);
 
@@ -48,26 +47,38 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
                 scene.add(model);
 
                 if (name === 'sceneModel') {
-                    model.children[16].material = createVideoTexture("contacto");
-                    model.children[17].material = createVideoTexture("experiencia");
-                    model.children[18].material = createVideoTexture("sobre_mi");
-                    model.children[19].material = createVideoTexture("franramos");
+                    model.children[9].material = createVideoTexture("contacto");
+                    model.children[10].material = createVideoTexture("franramos");
+                    model.children[11].material = createVideoTexture("experiencia");
+                    model.children[12].material = createVideoTexture("sobre_mi");
 
                     modelCamera = gltf.cameras[0];
                     animateTransition();
+
+                    mouseMixer = new THREE.AnimationMixer(model.children[8]);
+                    const clip = gltf.animations[0];
+                    const action = mouseMixer.clipAction(clip, model.children[8]);
+                    action.play();
                 }
 
                 if (name === 'humanModel') {
-                    mixer = new THREE.AnimationMixer(model.children[0]);
+                    humanMixer = new THREE.AnimationMixer(model.children[0]);
                     const clip = gltf.animations[0];
-                    const action = mixer.clipAction(clip, model.children[0]);
+                    const action = humanMixer.clipAction(clip, model.children[0]);
                     action.play();
                 }
             }
         };
 
-        loader.load('scene.gltf', (gltf) => addModelToScene(gltf, 'sceneModel'), null, (error) => console.error('Error al cargar el modelo glTF', error));
-        loader.load('human.glb', (gltf) => addModelToScene(gltf, 'humanModel'), null, (error) => console.error('Error al cargar el modelo glTF', error));
+        const onProgress = (xhr) => {
+            if (xhr.lengthComputable) {
+                const percentComplete = (xhr.loaded / xhr.total) * 100;
+                console.log(`Modelo ${xhr.target.responseURL.split('/').pop()} cargando: ${Math.round(percentComplete)}% completado`);
+            }
+        };
+
+        loader.load('scene.gltf', (gltf) => addModelToScene(gltf, 'sceneModel'), onProgress, (error) => console.error('Error al cargar el modelo glTF', error));
+        loader.load('human.glb', (gltf) => addModelToScene(gltf, 'humanModel'), onProgress, (error) => console.error('Error al cargar el modelo glTF', error));
 
         function animateTransition() {
             if (isLoaded) {
@@ -80,7 +91,7 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
 
                     gsap.to(camera.position, {
                         duration: 3,
-                        x: intermediatePosition.x + 0.5,
+                        x: intermediatePosition.x + 1,
                         y: intermediatePosition.y + 0.5,
                         z: targetCamera.position.z,
                         onUpdate: () => camera.lookAt(new THREE.Vector3(0, 0, 0))
@@ -102,8 +113,11 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
         function animate() {
             requestAnimationFrame(animate);
 
-            if (mixer) {
-                mixer.update(0.01);
+            if (humanMixer) {
+                humanMixer.update(0.005);
+            }
+            if (mouseMixer) {
+                mouseMixer.update(0.005);
             }
             if (cameraRef.current) {
                 renderer.render(scene, cameraRef.current);
@@ -112,7 +126,22 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
 
         animate();
 
-        return () => document.body.style.cursor = 'default';
+        const handleResize = () => {
+            const camera = cameraRef.current;
+            const renderer = rendererRef.current;
+            if (camera && renderer) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            document.body.style.cursor = 'default';
+            window.removeEventListener('resize', handleResize);
+        };
     }, [isLoaded, functions]);
 
     useEffect(() => {
@@ -129,15 +158,15 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
 
                 if (intersects.length > 0) {
                     switch (intersects[0].object.name) {
-                        case 'monitorIzquierda':
+                        case 'sobre_mi':
                             functions.sobreMi();
                             functions.selected();
                             break;
-                        case 'monitorDerecha':
+                        case 'experiencia':
                             functions.experiencia();
                             functions.selected();
                             break;
-                        case 'monitorArriba':
+                        case 'contacto':
                             functions.contacto();
                             functions.selected();
                             break;
@@ -158,9 +187,9 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
 
                 if (intersects.length > 0) {
                     switch (intersects[0].object.name) {
-                        case 'monitorIzquierda':
-                        case 'monitorDerecha':
-                        case 'monitorArriba':
+                        case 'sobre_mi':
+                        case 'experiencia':
+                        case 'contacto':
                             document.body.style.cursor = 'pointer';
                             break;
                         default:
