@@ -10,6 +10,7 @@ export default function App() {
   const [experienciaState, setExperienciaState] = useState(false)
   const [contactoState, setContactoState] = useState(false)
   let [isSelected, setIsSelected] = useState(false)
+  let [isLoaded, setIsLoaded] = useState(false)
 
   function renderSobreMi() {
     setSobreMiState(!sobreMiState)
@@ -24,20 +25,24 @@ export default function App() {
   function renderSelected() {
     setIsSelected(!isSelected)
   }
+  function renderLoaded() {
+    setIsLoaded(!isLoaded)
+  }
 
   let functions = {
     sobreMi: renderSobreMi,
     experiencia: renderExperiencia,
     contacto: renderContacto,
-    selected: renderSelected
+    selected: renderSelected,
+    loaded: renderLoaded
   }
   
   return (
     <>
-      <ThreeScene functions={functions} isSelected={isSelected} />
-      {sobreMiState && <SobreMi renderSobreMi={renderSobreMi} />}
-      {experienciaState && <Experiencia renderExperiencia={renderExperiencia} />}
-      {contactoState && <Contacto renderContacto={renderContacto} />}
+      <ThreeScene functions={functions} isSelected={isSelected} isLoaded={isLoaded} />
+      {sobreMiState && <SobreMi renderSobreMi={renderSobreMi} renderSelected={renderSelected} />}
+      {experienciaState && <Experiencia renderExperiencia={renderExperiencia} renderSelected={renderSelected} />}
+      {contactoState && <Contacto renderContacto={renderContacto} renderSelected={renderSelected} />}
       {
         (sobreMiState || experienciaState || contactoState) && <Footer /> }
     </>

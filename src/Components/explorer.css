@@ -1,5 +1,5 @@
-.background{
-    background: url(../../../public/assets/images/bg.png);
+.background {
+    background: url(../../public/assets/images/bg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -32,7 +32,7 @@
     padding: 5px;
 }
 
-.title-bar h3{
+.title-bar h3 {
     margin: 3px;
     font-weight: 500;
 }
