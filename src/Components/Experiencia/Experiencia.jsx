@@ -21,7 +21,7 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                 x: "0",
                 y: "0",
                 scale: 1,
-                duration: 0.4,
+                duration: 0.3,
                 ease: "power2.in"
             });
     }, []);
@@ -33,7 +33,7 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
             x: "45vw",
             y: "-50vh",
             scale: 0.1,
-            duration: 0.4,
+            duration: 0.25,
             ease: "power2.out",
             onComplete: () => {
                 renderSelected()
