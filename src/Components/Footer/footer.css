@@ -10,6 +10,7 @@ footer{
     background-size: cover;
     background-position-y: bottom;
 }
+/* revisar bug en celu del footer */
 
 .garbage{
     position: absolute;

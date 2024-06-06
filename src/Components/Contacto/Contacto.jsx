@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import '../explorer.css'
+import './contacto.css'
 
 export default function Contacto({ renderContacto, renderSelected }) {
     const containerRef = useRef(null);
@@ -42,6 +43,27 @@ export default function Contacto({ renderContacto, renderSelected }) {
         });
     }
 
+    const data = [
+        {
+            icon: "fa-regular fa-envelope",
+            type: "Email:",
+            href: "mailto:ramosbusiness56@gmail.com",
+            text: "ramosbusiness56@gmail.com"
+        },
+        {
+            icon: "fa-brands fa-linkedin-in",
+            type: "LinkedIn:",
+            href: "https://www.linkedin.com/in/franrammos/",
+            text: "Francisco Ramos"
+        },
+        {
+            icon: "fa-brands fa-instagram",
+            type: "Instagram:",
+            href: "https://www.instagram.com/franrammos_/",
+            text: "@franrammos_"
+        }
+    ]
+
     return (
         <div className='background'>
             <div className="explorerContainer" ref={containerRef}>
@@ -49,7 +71,22 @@ export default function Contacto({ renderContacto, renderSelected }) {
                     <h3>Contacto</h3>
                     <button onClick={close}>X</button>
                 </div>
-                <div className="content">asddad</div>
+                <div className="content">
+                    <div className='links'>
+                        {
+                            data &&
+                            data.map((contactData, i) => (
+                                <div className='link' key={i}>
+                                    <>
+                                        <i className={contactData.icon}></i>
+                                        <p>{contactData.type}</p>
+                                    </>
+                                    <a href={contactData.href}>{contactData.text}</a>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     )
