@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './App.css'
 import ThreeScene from './ThreeScene'
 import SobreMi from './Components/SobreMi/SobreMi'
 import Experiencia from './Components/Experiencia/Experiencia'

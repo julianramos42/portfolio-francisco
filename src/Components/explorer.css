@@ -1,5 +1,5 @@
 .background {
-    background: url(../../public/assets/images/bg.png);
+    background: url(../images/bg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,13 +15,15 @@
 }
 
 .explorerContainer {
-    width: 50vw;
-    height: 50vh;
+    width: 85vw;
+    height: 80vh;
     background-color: #EFECDD;
     border: 4px solid #000;
     border-radius: 5px;
     box-shadow: 5px 5px 15px #888888;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .title-bar {
@@ -43,9 +45,23 @@
     color: white;
     border: 1px solid white;
     border-radius: 5px;
+    padding: 6px;
 }
 
 .content {
     padding: 10px;
     color: #000;
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .explorerContainer{
+        width: 90vw;
+        height: 95vh;
+    }
 }

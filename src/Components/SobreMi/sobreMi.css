@@ -1,0 +1,88 @@
+.avatarBlock {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.avatarBlock section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.avatarBlock img {
+    border-radius: 15%;
+    width: 130px;
+    height: 160px;
+}
+
+.block {
+    padding: 10px 5%;
+    gap: 15px;
+    position: relative;
+}
+
+.block::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 90%;
+    height: 1px;
+    background-color: black;
+    text-align: center;
+}
+
+.block .description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.block .description h5 {
+    font-size: 17px;
+}
+
+.block ul {
+    margin-left: 25px;
+}
+
+.block ul li {
+    margin-top: 5px;
+}
+
+.block .tiktokContainer {
+    display: flex;
+    gap: 15px;
+    /* margin-left: 25px; */
+}
+
+.block .tiktok {
+    width: 150px;
+    height: 220px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .block .tiktokContainer {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .block .tiktok {
+        width: 120px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 376px){
+    .block .tiktok {
+        width: 97px;
+        height: 150px;
+    }
+}

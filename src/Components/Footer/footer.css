@@ -3,8 +3,8 @@ footer{
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 45px;
-    background: url(../../../public/assets/images/footer.png);
+    height: 49px;
+    background: url(../../images/footer.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,8 +17,14 @@ footer{
     left: 25px;
     width: 50px;
     height: 50px;
-    background: url(../../../public/assets/images/garbage.png);
+    background: url(../../images/garbage.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+ .garbage{
+    display: none;
+ }   
 }
