@@ -1,0 +1,121 @@
+.videoTrabajoContainer{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+
+.videoTrabajoContainer video{
+    width: 40%;
+    height: 253px;
+}
+
+.clientsBlock{
+    gap: 0;
+}
+
+.clientsBlock h3{
+    padding-top: 20px;
+}
+
+.clientsContainer{
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.clients{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    background-color: #e3e3e3;
+}
+
+.selectedClient {
+    background-color: rgb(177, 177, 245);
+}
+
+
+.clients:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.reelsText{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.reelsQuote{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 10px;
+}
+
+.reelsLinks{
+    display: flex;
+    gap: 15px;
+}
+
+.reelsLinks a{
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.reelsContainer{
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 30px 25px;
+}
+
+.reelsContainer video{
+    width: 200px;
+    height: 220px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1144px){
+    .clients{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .videoTrabajoContainer video{
+        height: 192px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .videoTrabajoContainer video{
+        height: 143px;
+    }
+
+    .reelsContainer{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .videoTrabajoContainer{
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .videoTrabajoContainer video{
+        width: 80%;
+        height: 192px;
+    }
+}

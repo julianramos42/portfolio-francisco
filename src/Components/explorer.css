@@ -15,23 +15,26 @@
 }
 
 .explorerContainer {
+    position: relative;
     width: 85vw;
     height: 80vh;
     background-color: #EFECDD;
     border: 4px solid #000;
     border-radius: 5px;
     box-shadow: 5px 5px 15px #888888;
-    font-family: Arial, sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .title-bar {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     background-color: #0055E5;
     color: #fff;
     padding: 5px;
+    z-index: 1;
 }
 
 .title-bar h3 {
