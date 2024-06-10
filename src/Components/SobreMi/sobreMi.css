@@ -43,7 +43,7 @@
 }
 
 .block .description h5 {
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .block ul {
@@ -58,6 +58,17 @@
     display: flex;
     gap: 15px;
     /* margin-left: 25px; */
+}
+
+.block .tiktokCard{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+}
+
+.block .tiktokCard a{
+    color: black;
 }
 
 .block .tiktok {

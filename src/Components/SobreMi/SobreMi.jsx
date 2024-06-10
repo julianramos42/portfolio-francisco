@@ -3,7 +3,12 @@ import gsap from 'gsap';
 import '../explorer.css'
 import './sobreMi.css'
 import avatar from '../../images/avatar.png'
-import prueba from '../../images/1.png'
+import sobreMi1 from '../../images/sobreMi/sobreMi2022-1.jpg'
+import sobreMi2 from '../../images/sobreMi/sobreMi2022-2.jpg'
+import sobreMi3 from '../../images/sobreMi/sobreMi2023-1.jpg'
+import sobreMi4 from '../../images/sobreMi/sobreMi2023-2.jpg'
+import sobreMi5 from '../../images/sobreMi/sobreMi2023-3.jpg'
+import sobreMi6 from '../../images/sobreMi/sobreMi2024-1.jpg'
 
 export default function SobreMi({ renderSobreMi, renderSelected }) {
     const containerRef = useRef(null);
@@ -26,7 +31,20 @@ export default function SobreMi({ renderSobreMi, renderSelected }) {
                 scale: 1,
                 duration: 0.3,
                 ease: "power2.in"
-            });
+            }
+        );
+
+        const handleKeyPress = (event) => {
+            if (event.keyCode === 27) { // 27 es escape
+                close();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyPress);
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+
     }, []);
 
     function close() {
@@ -48,18 +66,45 @@ export default function SobreMi({ renderSobreMi, renderSelected }) {
     const descriptions = [
         {
             age: 2022,
-            text: ["Empecé a aprender el paquete Adobe, incluyendo Premiere Pro, After Effects y Photoshop.","Inicié la creación de contenido en TikTok sobre videojuegos, logrando alcanzar 5 millones de visitas."],       
-            images: [prueba, prueba, prueba, prueba]
+            text: ["Empecé a aprender el paquete Adobe, incluyendo Premiere Pro, After Effects y Photoshop.", "Inicié la creación de contenido en TikTok sobre videojuegos, logrando alcanzar 5 millones de visitas."],
+            images: [
+                {
+                    href: '',
+                    src: sobreMi1
+                },
+                {
+                    href: '',
+                    src: sobreMi2
+                }
+            ]
         },
         {
             age: 2023,
-            text: ["Perfeccioné mis habilidades de edición de video e imágenes.","Empecé a subir mis ediciones a TikTok, alcanzando más de 10 millones de visitas."],       
-            images: [prueba, prueba, prueba, prueba]
+            text: ["Perfeccioné mis habilidades de edición de video e imágenes.", "Empecé a subir mis ediciones a TikTok, alcanzando más de 10 millones de visitas."],
+            images: [
+                {
+                    href: 'https://www.tiktok.com/@franrammos/video/7154594473685683462',
+                    src: sobreMi3
+                },
+                {
+                    href: 'https://www.tiktok.com/@franrammos/video/7154955420434484485',
+                    src: sobreMi4
+                },
+                {
+                    href: 'https://www.tiktok.com/@franrammos/video/7152975499013213445',
+                    src: sobreMi5
+                }
+            ]
         },
         {
             age: 2024,
-            text: ["Inicié mi marca personal en Instagram y TikTok.","Más de 500 videos editados.","Más de 50 miniaturas realizadas.","Colaboré exitosamente con más de 20 clientes."],       
-            images: [prueba, prueba, prueba, prueba]
+            text: ["Inicié mi marca personal en Instagram y TikTok.", "Más de 500 videos editados.", "Más de 50 miniaturas realizadas.", "Colaboré exitosamente con más de 20 clientes."],
+            images: [
+                {
+                    href: '',
+                    src: sobreMi6
+                },
+            ]
         }
     ]
 
@@ -80,27 +125,32 @@ export default function SobreMi({ renderSobreMi, renderSelected }) {
                     </div>
                     {
                         descriptions &&
-                            descriptions.map((description, i) => (
-                                <section key={i} className='block'>
-                                    <div className='description'>
-                                        <h5>{description.age}</h5>
-                                        <ul>
-                                            {
-                                                description.text.map((text, i) => (
-                                                    <li key={i}>{text}</li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </div>
-                                    <div className='tiktokContainer'>
+                        descriptions.map((description, i) => (
+                            <section key={i} className='block'>
+                                <div className='description'>
+                                    <h5>{description.age}</h5>
+                                    <ul>
                                         {
-                                            description.images.map((image, i) => (
-                                                <img key={i} src={image} alt='tiktok' className='tiktok'></img>
+                                            description.text.map((text, i) => (
+                                                <li key={i}>{text}</li>
                                             ))
                                         }
-                                    </div>
-                                </section>
-                            ))
+                                    </ul>
+                                </div>
+                                <div className='tiktokContainer'>
+                                    {
+                                        description.images.map((image, i) => (
+                                            <div className='tiktokCard'>
+                                                <img key={i} src={image.src} alt='tiktok' className='tiktok'></img>
+                                                {
+                                                    image.href && <a href={image.href} target='_blank'>Ir al tiktok</a>
+                                                }
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </section>
+                        ))
                     }
                 </div>
             </div>

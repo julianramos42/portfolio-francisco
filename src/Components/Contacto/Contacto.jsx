@@ -24,7 +24,20 @@ export default function Contacto({ renderContacto, renderSelected }) {
                 scale: 1,
                 duration: 0.3,
                 ease: "power2.in"
-            });
+            }
+        );
+
+        const handleKeyPress = (event) => {
+            if (event.keyCode === 27) { // 27 es escape
+                close();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyPress);
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+
     }, []);
 
     function close() {

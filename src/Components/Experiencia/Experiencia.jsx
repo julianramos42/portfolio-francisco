@@ -7,6 +7,7 @@ import pabloFernandezVideo from '../../videos/Pablo_Fernández_Trabajos.mp4'
 import pabloFernandezFoto from '../../images/clientes/Pablo.png'
 import norteVerdeFoto from '../../images/clientes/Norte_Verde.png'
 import santiMalanoFoto from '../../images/clientes/Santi_Malano.png'
+import variosFoto from '../../images/clientes/varios.png'
 //norteVerde
 import norteVerde1 from '../../videos/reels/Norte_Verde/nv1.mp4'
 import norteVerde2 from '../../videos/reels/Norte_Verde/nv2.mp4'
@@ -99,7 +100,20 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                 scale: 1,
                 duration: 0.3,
                 ease: "power2.in"
-            });
+            }
+        );
+
+        const handleKeyPress = (event) => {
+            if (event.keyCode === 27) { // 27 es escape
+                close();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyPress);
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+        
     }, []);
 
     function close() {
@@ -136,7 +150,7 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
             id: 'salteno'
         },
         {
-            src: '',
+            src: variosFoto,
             id: 'varios'
         }
     ]
