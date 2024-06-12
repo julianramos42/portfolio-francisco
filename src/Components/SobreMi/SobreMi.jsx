@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import '../explorer.css'
 import './sobreMi.css'
-import avatar from '../../images/avatar.png'
-import sobreMi1 from '../../images/sobreMi/sobreMi2022-1.jpg'
-import sobreMi2 from '../../images/sobreMi/sobreMi2022-2.jpg'
-import sobreMi3 from '../../images/sobreMi/sobreMi2023-1.jpg'
-import sobreMi4 from '../../images/sobreMi/sobreMi2023-2.jpg'
-import sobreMi5 from '../../images/sobreMi/sobreMi2023-3.jpg'
-import sobreMi6 from '../../images/sobreMi/sobreMi2024-1.jpg'
+import avatar from '../../images/avatar.webp'
+import sobreMi1 from '../../images/sobreMi/sobreMi2022-1.webp'
+import sobreMi2 from '../../images/sobreMi/sobreMi2022-2.webp'
+import sobreMi3 from '../../images/sobreMi/sobreMi2023-1.webp'
+import sobreMi4 from '../../images/sobreMi/sobreMi2023-2.webp'
+import sobreMi5 from '../../images/sobreMi/sobreMi2023-3.webp'
+import sobreMi6 from '../../images/sobreMi/sobreMi2024-1.webp'
 
 export default function SobreMi({ renderSobreMi, renderSelected }) {
     const containerRef = useRef(null);
@@ -140,8 +140,8 @@ export default function SobreMi({ renderSobreMi, renderSelected }) {
                                 <div className='tiktokContainer'>
                                     {
                                         description.images.map((image, i) => (
-                                            <div className='tiktokCard'>
-                                                <img key={i} src={image.src} alt='tiktok' className='tiktok'></img>
+                                            <div key={i} className='tiktokCard'>
+                                                <img src={image.src} alt='tiktok' className='tiktok'></img>
                                                 {
                                                     image.href && <a href={image.href} target='_blank' rel='noreferrer'>Ir al tiktok</a>
                                                 }

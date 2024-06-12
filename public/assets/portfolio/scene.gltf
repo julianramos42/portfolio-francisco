@@ -780,62 +780,62 @@
 		{
 			"mimeType":"image/png",
 			"name":"silla_lowpoly",
-			"uri":"textures/silla_lowpoly.png"
+			"uri":"textures/silla_lowpoly.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Teclado_lowpoly",
-			"uri":"textures/Teclado_lowpoly.png"
+			"uri":"textures/Teclado_lowpoly.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"mesa_lowpoly_ok",
-			"uri":"textures/mesa_lowpoly_ok.png"
+			"uri":"textures/mesa_lowpoly_ok.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"monitorcen_lowpoly",
-			"uri":"textures/monitorcen_lowpoly.png"
+			"uri":"textures/monitorcen_lowpoly.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"monitorizq_lowpoly",
-			"uri":"textures/monitorizq_lowpoly.png"
+			"uri":"textures/monitorizq_lowpoly.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"monitorder_lowpoly",
-			"uri":"textures/monitorder_lowpoly.png"
+			"uri":"textures/monitorder_lowpoly.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Monitorarri_lowpoly",
-			"uri":"textures/Monitorarri_lowpoly.png"
+			"uri":"textures/Monitorarri_lowpoly.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Mouse_lowpoly",
-			"uri":"textures/Mouse_lowpoly.png"
+			"uri":"textures/Mouse_lowpoly.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Contacto.mp4",
-			"uri":"textures/Contacto_mp4.png"
+			"uri":"textures/Contacto_mp4.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Franramos",
-			"uri":"textures/Franramos.png"
+			"uri":"textures/Franramos.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Experienciaa",
-			"uri":"textures/Experienciaa.png"
+			"uri":"textures/Experienciaa.webp"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Sobre mi",
-			"uri":"textures/Sobre%20mi.png"
+			"uri":"textures/Sobre%20mi.webp"
 		}
 	],
 	"accessors":[
