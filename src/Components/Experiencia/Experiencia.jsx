@@ -7,6 +7,7 @@ import pabloFernandezVideo from '../../videos/Pablo_Fernández_Trabajos.mp4'
 import pabloFernandezFoto from '../../images/clientes/Pablo.png'
 import norteVerdeFoto from '../../images/clientes/Norte_Verde.png'
 import santiMalanoFoto from '../../images/clientes/Santi_Malano.png'
+import saltenoFoto from '../../images/clientes/salteno.png'
 import variosFoto from '../../images/clientes/varios.png'
 //norteVerde
 import norteVerde1 from '../../videos/reels/Norte_Verde/nv1.mp4'
@@ -113,7 +114,7 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
         return () => {
             document.removeEventListener('keydown', handleKeyPress);
         };
-        
+
     }, []);
 
     function close() {
@@ -146,7 +147,7 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
             id: 'santiMalano'
         },
         {
-            src: '',
+            src: saltenoFoto,
             id: 'salteno'
         },
         {
@@ -209,7 +210,21 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                         {
                             clientState === 'norteVerde' &&
                             <div>
-                                <h3>dasdadsadasdadsa dasdadsa dasdadsadasdadsa dasdadsa dasdadsa dasdadsa dasdadsadasdadsa dasdadsadasdadsadasdadsa dasdadsa.</h3>
+                                <div className='reelsText'>
+                                    <h3>Modelados</h3>
+                                    <p>Combiné técnicas de dibujo tradicional con herramientas digitales avanzadas para destacar los edificios de la empresa de una manera única y atractiva.</p>
+                                </div>
+                                <section className='reelsQuote'>
+                                    <h3>Norte Verde</h3>
+                                    {/* <p>"La edición de video para mi canal de YouTube superó todas mis expectativas.
+                                        No solo logró capturar la esencia de mi marca, sino que también  hicieron que mis videos se destacaran."
+                                    </p> */}
+                                    <div className='reelsLinks'>
+                                        <a href='https://norte-verde.cl/' target='_blank'>Página Oficial</a>
+                                        <a href='https://www.linkedin.com/company/norte-verde/' target='_blank'>LinkedIn</a>
+                                        <a href='https://www.instagram.com/inorteverde/' target='_blank'>Instagram</a>
+                                    </div>
+                                </section>
                                 <div className='reelsContainer'>
                                     {
                                         norteVerdeVideos &&
@@ -225,7 +240,7 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                             clientState === 'pabloFernandez' &&
                             <div>
                                 <div className='reelsText'>
-                                    <h3>Vídeos Corporativos</h3>
+                                    <h3>Corporativos</h3>
                                     <p>Producción y edición de videos corporativos profesionales que destacan la identidad y los valores de tu empresa, ayudando a comunicar tu mensaje de manera efectiva y atractiva.</p>
                                 </div>
                                 <section className='reelsQuote'>
@@ -280,6 +295,16 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                                     <h3>Highlights</h3>
                                     <p>Edición dinámica de highlights que capturan los mejores momentos, ideal para jugadas, momentos graciosos.</p>
                                 </div>
+                                <section className='reelsQuote'>
+                                    <h3>Salteno</h3>
+                                    {/* <p>"La edición de video para mi canal de YouTube superó todas mis expectativas.
+                                        No solo logró capturar la esencia de mi marca, sino que también  hicieron que mis videos se destacaran."
+                                    </p> */}
+                                    <div className='reelsLinks'>
+                                        <a href='https://www.twitch.tv/Saltenno' target='_blank'>Twitch</a>
+                                        <a href='https://www.tiktok.com/@saltenno' target='_blank'>Tiktok</a>
+                                    </div>
+                                </section>
                                 <div className='reelsContainer'>
                                     {
                                         saltenoVideos &&
@@ -293,7 +318,10 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                         {
                             clientState === 'varios' &&
                             <div>
-                                <h3>dasdadsadasdadsa dasdadsa dasdadsadasdadsa dasdadsa dasdadsa dasdadsa dasdadsadasdadsa dasdadsadasdadsadasdadsa dasdadsa.</h3>
+                                <div className='reelsText'>
+                                    <h3>Variedad</h3>
+                                    <p>Trabajé en una amplia gama de proyectos, desde videos promocionales hasta contenido para redes sociales, adaptándome a diferentes estilos y necesidades.</p>
+                                </div>
                                 <div className='reelsContainer'>
                                     {
                                         variosVideos &&
