@@ -8,6 +8,7 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
     const sceneRef = useRef(null);
     const cameraRef = useRef(null);
     const [finalCamera, setFinalCamera] = useState('');
+    const [cantModelsLoaded, setCantModelsLoaded] = useState(0)
 
     useEffect(() => {
         const renderer = rendererRef.current || new THREE.WebGLRenderer({ antialias: true });
@@ -54,7 +55,6 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
 
                     modelCamera = gltf.cameras[0];
                     animateTransition();
-
                     mouseMixer = new THREE.AnimationMixer(model.children[8]);
                     const clip = gltf.animations[0];
                     const action = mouseMixer.clipAction(clip, model.children[8]);
@@ -67,18 +67,14 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
                     const action = humanMixer.clipAction(clip, model.children[0]);
                     action.play();
                 }
+                setCantModelsLoaded(cantModelsLoaded + 1)
             }
         };
 
-        const onProgress = (xhr) => {
-            if (xhr.lengthComputable) {
-                const percentComplete = (xhr.loaded / xhr.total) * 100;
-                console.log(`Modelo ${xhr.target.responseURL.split('/').pop()} cargando: ${Math.round(percentComplete)}% completado`);
-            }
-        };
-
-        loader.load('scene.gltf', (gltf) => addModelToScene(gltf, 'sceneModel'), onProgress, (error) => console.error('Error al cargar el modelo glTF', error));
-        loader.load('human.glb', (gltf) => addModelToScene(gltf, 'humanModel'), onProgress, (error) => console.error('Error al cargar el modelo glTF', error));
+        loader.load('human.glb', (gltf) => addModelToScene(gltf, 'humanModel'), null, (error) => console.error('Error al cargar el modelo glTF', error));
+        if (cantModelsLoaded !== 0) {
+            loader.load('scene.gltf', (gltf) => addModelToScene(gltf, 'sceneModel'), null, (error) => console.error('Error al cargar el modelo glTF', error));
+        }
 
         function animateTransition() {
             if (isLoaded) {
@@ -97,7 +93,7 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
                             z: targetCamera.position.z,
                             onUpdate: () => camera.lookAt(new THREE.Vector3(0, 0, 0))
                         });
-                    }else{
+                    } else {
                         gsap.to(camera.position, {
                             duration: 3,
                             x: intermediatePosition.x + 1,
@@ -154,7 +150,7 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
             document.body.style.cursor = 'default';
             window.removeEventListener('resize', handleResize);
         };
-    }, [isLoaded, functions]);
+    }, [isLoaded, functions, cantModelsLoaded]);
 
     useEffect(() => {
         const raycaster = new THREE.Raycaster();
@@ -241,7 +237,13 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
         });
     }, []);
 
-    return null;
+    return (
+        <>
+            {
+                cantModelsLoaded < 2 ? <div className='loaderContainer'><div className='loader'></div><p>Cargando el modelo 3D</p></div> : null
+            }
+        </>
+    )
 }
 
 export default ThreeScene;
