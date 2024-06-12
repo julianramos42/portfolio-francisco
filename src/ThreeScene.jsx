@@ -89,13 +89,23 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
                     const smoothFactor = 0.2;
                     const intermediatePosition = new THREE.Vector3().lerpVectors(camera.position, targetCamera.position, smoothFactor);
 
-                    gsap.to(camera.position, {
-                        duration: 3,
-                        x: intermediatePosition.x + 1,
-                        y: intermediatePosition.y + 0.5,
-                        z: targetCamera.position.z,
-                        onUpdate: () => camera.lookAt(new THREE.Vector3(0, 0, 0))
-                    });
+                    if (window.innerWidth < 600) {
+                        gsap.to(camera.position, {
+                            duration: 3,
+                            x: intermediatePosition.x + 3.2,
+                            y: intermediatePosition.y + 1,
+                            z: targetCamera.position.z,
+                            onUpdate: () => camera.lookAt(new THREE.Vector3(0, 0, 0))
+                        });
+                    }else{
+                        gsap.to(camera.position, {
+                            duration: 3,
+                            x: intermediatePosition.x + 1,
+                            y: intermediatePosition.y + 0.5,
+                            z: targetCamera.position.z,
+                            onUpdate: () => camera.lookAt(new THREE.Vector3(0, 0, 0))
+                        });
+                    }
 
                     gsap.to(camera.rotation, {
                         duration: 3,
@@ -130,13 +140,15 @@ function ThreeScene({ functions, isSelected, isLoaded }) {
             const camera = cameraRef.current;
             const renderer = rendererRef.current;
             if (camera && renderer) {
-                camera.aspect = window.innerWidth / window.innerHeight;
+                const aspect = window.innerWidth / window.innerHeight;
+                camera.aspect = aspect;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
         };
 
         window.addEventListener('resize', handleResize);
+        handleResize();
 
         return () => {
             document.body.style.cursor = 'default';
