@@ -143,7 +143,7 @@ export default function SobreMi({ renderSobreMi, renderSelected }) {
                                             <div className='tiktokCard'>
                                                 <img key={i} src={image.src} alt='tiktok' className='tiktok'></img>
                                                 {
-                                                    image.href && <a href={image.href} target='_blank'>Ir al tiktok</a>
+                                                    image.href && <a href={image.href} target='_blank' rel='noreferrer'>Ir al tiktok</a>
                                                 }
                                             </div>
                                         ))

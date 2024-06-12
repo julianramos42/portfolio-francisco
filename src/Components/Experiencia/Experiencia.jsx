@@ -220,9 +220,9 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                                         No solo logró capturar la esencia de mi marca, sino que también  hicieron que mis videos se destacaran."
                                     </p> */}
                                     <div className='reelsLinks'>
-                                        <a href='https://norte-verde.cl/' target='_blank'>Página Oficial</a>
-                                        <a href='https://www.linkedin.com/company/norte-verde/' target='_blank'>LinkedIn</a>
-                                        <a href='https://www.instagram.com/inorteverde/' target='_blank'>Instagram</a>
+                                        <a href='https://norte-verde.cl/' target='_blank' rel='noreferrer'>Página Oficial</a>
+                                        <a href='https://www.linkedin.com/company/norte-verde/' target='_blank' rel='noreferrer'>LinkedIn</a>
+                                        <a href='https://www.instagram.com/inorteverde/' target='_blank' rel='noreferrer'>Instagram</a>
                                     </div>
                                 </section>
                                 <div className='reelsContainer'>
@@ -249,8 +249,8 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                                         No solo logró capturar la esencia de mi marca, sino que también  hicieron que mis videos se destacaran."
                                     </p>
                                     <div className='reelsLinks'>
-                                        <a href='https://www.youtube.com/@6R.Institue' target='_blank'>Youtube</a>
-                                        <a href='https://www.linkedin.com/in/pablo-fernandez-marketingtech/' target='_blank'>LinkedIn</a>
+                                        <a href='https://www.youtube.com/@6R.Institue' target='_blank' rel='noreferrer'>Youtube</a>
+                                        <a href='https://www.linkedin.com/in/pablo-fernandez-marketingtech/' target='_blank' rel='noreferrer'>LinkedIn</a>
                                     </div>
                                 </section>
                                 <div className='reelsContainer'>
@@ -274,8 +274,8 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                                     <h3>Santiago Malano</h3>
                                     <p>"Gracias a la edición de Fran, mis videos en redes  ganaron más interacción y se ven mucho mejor."</p>
                                     <div className='reelsLinks'>
-                                        <a href='https://www.youtube.com/@santimalano' target='_blank'>Youtube</a>
-                                        <a href='https://www.instagram.com/santi.malano/' target='_blank'>Instagram</a>
+                                        <a href='https://www.youtube.com/@santimalano' target='_blank' rel='noreferrer'>Youtube</a>
+                                        <a href='https://www.instagram.com/santi.malano/' target='_blank' rel='noreferrer'>Instagram</a>
                                     </div>
                                 </section>
                                 <div className='reelsContainer'>
@@ -301,8 +301,8 @@ export default function Experiencia({ renderExperiencia, renderSelected }) {
                                         No solo logró capturar la esencia de mi marca, sino que también  hicieron que mis videos se destacaran."
                                     </p> */}
                                     <div className='reelsLinks'>
-                                        <a href='https://www.twitch.tv/Saltenno' target='_blank'>Twitch</a>
-                                        <a href='https://www.tiktok.com/@saltenno' target='_blank'>Tiktok</a>
+                                        <a href='https://www.twitch.tv/Saltenno' target='_blank' rel='noreferrer'>Twitch</a>
+                                        <a href='https://www.tiktok.com/@saltenno' target='_blank' rel='noreferrer'>Tiktok</a>
                                     </div>
                                 </section>
                                 <div className='reelsContainer'>

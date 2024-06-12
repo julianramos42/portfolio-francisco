@@ -94,7 +94,7 @@ export default function Contacto({ renderContacto, renderSelected }) {
                                         <i className={contactData.icon}></i>
                                         <p>{contactData.type}</p>
                                     </>
-                                    <a href={contactData.href} target='_blank'>{contactData.text}</a>
+                                    <a href={contactData.href} target='_blank' rel='noreferrer'>{contactData.text}</a>
                                 </div>
                             ))
                         }
